@@ -38,9 +38,3 @@ func _process(delta):
 		get_node("AnimatedSprite2D").animation = "up"
 		get_node("AnimatedSprite2D").flip_h = false
 		get_node("AnimatedSprite2D").flip_v = velocity.y > 0
-
-
-	if velocity.x < 0:
-		get_node("AnimatedSprite2D").flip_h = true
-	else:
-		get_node("AnimatedSprite2D").flip_h = false
