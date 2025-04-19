@@ -1,4 +1,5 @@
 extends Area2D
+signal hit
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
@@ -38,3 +39,14 @@ func _process(delta):
 		get_node("AnimatedSprite2D").animation = "up"
 		get_node("AnimatedSprite2D").flip_h = false
 		get_node("AnimatedSprite2D").flip_v = velocity.y > 0
+
+
+func _on_body_entered(_body: Node2D):
+	hide()
+	hit.emit()
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+
+func start(pos):
+	position = pos
+	show()
+	get_node("CollisionShape2D").disabled = false
